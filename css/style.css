@@ -1,0 +1,401 @@
+/* ══════════════════════════════════════
+   CSS CUSTOM PROPERTIES  (light / dark)
+══════════════════════════════════════ */
+:root {
+  --bg:          #f0f2f5;
+  --surface:     #ffffff;
+  --surface-2:   #f7f8fa;
+  --border:      #e2e5ea;
+  --text:        #1a1d23;
+  --text-muted:  #6b7280;
+  --primary:     #4f6ef7;
+  --primary-h:   #3a57e8;
+  --danger:      #ef4444;
+  --danger-h:    #dc2626;
+  --secondary:   #6b7280;
+  --secondary-h: #4b5563;
+  --done-color:  #9ca3af;
+  --radius:      12px;
+  --shadow:      0 2px 12px rgba(0,0,0,.08);
+  --transition:  .2s ease;
+}
+
+[data-theme="dark"] {
+  --bg:          #0f1117;
+  --surface:     #1c1f26;
+  --surface-2:   #252830;
+  --border:      #2e3140;
+  --text:        #e8eaf0;
+  --text-muted:  #8b90a0;
+  --primary:     #6b84f8;
+  --primary-h:   #8398fa;
+  --danger:      #f87171;
+  --danger-h:    #fca5a5;
+  --secondary:   #6b7280;
+  --secondary-h: #9ca3af;
+  --done-color:  #4b5563;
+  --shadow:      0 2px 12px rgba(0,0,0,.4);
+}
+
+/* ══════════════════════════════════════
+   RESET & BASE
+══════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  transition: background var(--transition), color var(--transition);
+}
+
+/* ══════════════════════════════════════
+   TOP BAR
+══════════════════════════════════════ */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.branding {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: .02em;
+  color: var(--primary);
+}
+
+.icon-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--text);
+  transition: background var(--transition);
+}
+.icon-btn:hover { background: var(--surface-2); }
+
+/* ══════════════════════════════════════
+   GRID LAYOUT
+══════════════════════════════════════ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 20px 40px;
+}
+
+/* ══════════════════════════════════════
+   CARDS
+══════════════════════════════════════ */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.card h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+/* ══════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════ */
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: .875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), transform .1s;
+  white-space: nowrap;
+}
+.btn:active { transform: scale(.97); }
+
+.btn-primary   { background: var(--primary);   color: #fff; }
+.btn-primary:hover   { background: var(--primary-h); }
+
+.btn-secondary { background: var(--secondary); color: #fff; }
+.btn-secondary:hover { background: var(--secondary-h); }
+
+.btn-danger    { background: var(--danger);    color: #fff; }
+.btn-danger:hover    { background: var(--danger-h); }
+
+/* ══════════════════════════════════════
+   INPUTS
+══════════════════════════════════════ */
+input[type="text"],
+input[type="url"],
+input[type="number"],
+select {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: .875rem;
+  padding: 8px 12px;
+  outline: none;
+  transition: border-color var(--transition), background var(--transition);
+}
+input[type="text"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+select:focus { border-color: var(--primary); }
+
+/* ══════════════════════════════════════
+   GREETING CARD
+══════════════════════════════════════ */
+.greeting-card { grid-column: 1 / -1; }
+
+.datetime {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+#clock {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: .03em;
+  color: var(--primary);
+}
+
+#date {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+#greeting {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.name-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.name-row input { flex: 1; min-width: 160px; }
+
+/* ══════════════════════════════════════
+   TIMER CARD
+══════════════════════════════════════ */
+.timer-settings {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.timer-settings label { font-size: .875rem; color: var(--text-muted); }
+.timer-settings input { width: 70px; }
+
+.timer-display {
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: .05em;
+  color: var(--primary);
+  margin: 16px 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ══════════════════════════════════════
+   TO-DO CARD
+══════════════════════════════════════ */
+.todo-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.todo-controls input { flex: 1; min-width: 160px; }
+
+.sort-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-size: .875rem;
+  color: var(--text-muted);
+}
+
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 340px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.task-list::-webkit-scrollbar { width: 4px; }
+.task-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: background var(--transition);
+}
+.task-item.done .task-label {
+  text-decoration: line-through;
+  color: var(--done-color);
+}
+
+.task-check {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: var(--primary);
+}
+
+.task-label {
+  flex: 1;
+  font-size: .9rem;
+  word-break: break-word;
+}
+
+.task-edit-input {
+  flex: 1;
+  font-size: .9rem;
+  background: var(--surface);
+  border: 1px solid var(--primary);
+  border-radius: 6px;
+  color: var(--text);
+  padding: 4px 8px;
+  outline: none;
+}
+
+.task-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.task-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: .78rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: background var(--transition), color var(--transition);
+}
+.task-btn:hover { background: var(--surface); color: var(--text); }
+.task-btn.del:hover { background: var(--danger); color: #fff; border-color: var(--danger); }
+
+/* ══════════════════════════════════════
+   QUICK LINKS CARD
+══════════════════════════════════════ */
+.link-add-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.link-add-row input { flex: 1; min-width: 120px; }
+
+.link-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.link-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: .875rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: background var(--transition), border-color var(--transition);
+}
+.link-chip:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+.link-chip:hover .link-del { color: #fff; opacity: .7; }
+
+.link-del {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: .85rem;
+  color: var(--text-muted);
+  padding: 0;
+  line-height: 1;
+  transition: opacity var(--transition);
+}
+.link-del:hover { opacity: 1 !important; }
+
+/* ══════════════════════════════════════
+   TOAST NOTIFICATION
+══════════════════════════════════════ */
+#toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--text);
+  color: var(--bg);
+  padding: 10px 22px;
+  border-radius: 24px;
+  font-size: .875rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: transform .3s ease, opacity .3s ease;
+  pointer-events: none;
+  z-index: 999;
+}
+#toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media (max-width: 600px) {
+  .grid { gap: 14px; padding: 0 12px 32px; }
+  #clock { font-size: 1.8rem; }
+  .timer-display { font-size: 2.6rem; }
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Start Page</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- ───────── TOP BAR ───────── -->
+    <header class="top-bar">
+      <div class="branding">⚡ StartPage</div>
+      <div class="top-bar-controls">
+        <button id="themeToggle" class="icon-btn" title="Toggle light/dark mode">🌙</button>
+      </div>
+    </header>
+
+    <main class="grid">
+
+      <!-- ───────── GREETING ───────── -->
+      <section class="card greeting-card">
+        <div class="datetime">
+          <span id="clock"></span>
+          <span id="date"></span>
+        </div>
+        <h1 id="greeting"></h1>
+        <div class="name-row">
+          <input id="nameInput" type="text" placeholder="Enter your name…" maxlength="30" />
+          <button id="saveName" class="btn btn-primary">Save</button>
+        </div>
+      </section>
+
+      <!-- ───────── FOCUS TIMER ───────── -->
+      <section class="card timer-card">
+        <h2>🍅 Focus Timer</h2>
+        <div class="timer-settings">
+          <label for="customMinutes">Minutes:</label>
+          <input id="customMinutes" type="number" min="1" max="120" value="25" />
+          <button id="applyTime" class="btn btn-secondary">Apply</button>
+        </div>
+        <div id="timerDisplay" class="timer-display">25:00</div>
+        <div class="timer-controls">
+          <button id="startTimer" class="btn btn-primary">Start</button>
+          <button id="stopTimer" class="btn btn-secondary">Stop</button>
+          <button id="resetTimer" class="btn btn-danger">Reset</button>
+        </div>
+      </section>
+
+      <!-- ───────── TO-DO LIST ───────── -->
+      <section class="card todo-card">
+        <h2>📝 To-Do List</h2>
+        <div class="todo-controls">
+          <input id="taskInput" type="text" placeholder="New task…" maxlength="100" />
+          <button id="addTask" class="btn btn-primary">Add</button>
+        </div>
+        <div class="sort-row">
+          <label for="sortSelect">Sort:</label>
+          <select id="sortSelect">
+            <option value="default">Default</option>
+            <option value="az">A → Z</option>
+            <option value="za">Z → A</option>
+            <option value="done">Done last</option>
+          </select>
+        </div>
+        <ul id="taskList" class="task-list"></ul>
+      </section>
+
+      <!-- ───────── QUICK LINKS ───────── -->
+      <section class="card links-card">
+        <h2>🔗 Quick Links</h2>
+        <div class="link-add-row">
+          <input id="linkName" type="text" placeholder="Label" maxlength="30" />
+          <input id="linkUrl" type="url" placeholder="https://…" maxlength="200" />
+          <button id="addLink" class="btn btn-primary">Add</button>
+        </div>
+        <div id="linkGrid" class="link-grid"></div>
+      </section>
+
+    </main>
+
+    <div id="toast"></div>
+    <script src="js/app.js"></script>
+  </body>
+</html>
